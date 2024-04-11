@@ -42,6 +42,8 @@ public class CacheConfiguration {
             createCache(cm, com.chemista15.repository.UserRepository.USERS_BY_EMAIL_CACHE);
             createCache(cm, com.chemista15.domain.Authority.class.getName());
             createCache(cm, com.chemista15.domain.Collection.class.getName());
+            createCache(cm, com.chemista15.domain.Collection.class.getName() + ".media");
+            createCache(cm, com.chemista15.domain.Media.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

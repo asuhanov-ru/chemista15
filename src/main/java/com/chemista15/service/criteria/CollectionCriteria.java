@@ -30,6 +30,8 @@ public class CollectionCriteria implements Serializable, Criteria {
 
     private StringFilter description;
 
+    private LongFilter mediaId;
+
     private Boolean distinct;
 
     public CollectionCriteria() {}
@@ -39,6 +41,7 @@ public class CollectionCriteria implements Serializable, Criteria {
         this.uuid = other.optionalUuid().map(UUIDFilter::copy).orElse(null);
         this.name = other.optionalName().map(StringFilter::copy).orElse(null);
         this.description = other.optionalDescription().map(StringFilter::copy).orElse(null);
+        this.mediaId = other.optionalMediaId().map(LongFilter::copy).orElse(null);
         this.distinct = other.distinct;
     }
 
@@ -123,6 +126,25 @@ public class CollectionCriteria implements Serializable, Criteria {
         this.description = description;
     }
 
+    public LongFilter getMediaId() {
+        return mediaId;
+    }
+
+    public Optional<LongFilter> optionalMediaId() {
+        return Optional.ofNullable(mediaId);
+    }
+
+    public LongFilter mediaId() {
+        if (mediaId == null) {
+            setMediaId(new LongFilter());
+        }
+        return mediaId;
+    }
+
+    public void setMediaId(LongFilter mediaId) {
+        this.mediaId = mediaId;
+    }
+
     public Boolean getDistinct() {
         return distinct;
     }
@@ -156,13 +178,14 @@ public class CollectionCriteria implements Serializable, Criteria {
             Objects.equals(uuid, that.uuid) &&
             Objects.equals(name, that.name) &&
             Objects.equals(description, that.description) &&
+            Objects.equals(mediaId, that.mediaId) &&
             Objects.equals(distinct, that.distinct)
         );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, uuid, name, description, distinct);
+        return Objects.hash(id, uuid, name, description, mediaId, distinct);
     }
 
     // prettier-ignore
@@ -173,6 +196,7 @@ public class CollectionCriteria implements Serializable, Criteria {
             optionalUuid().map(f -> "uuid=" + f + ", ").orElse("") +
             optionalName().map(f -> "name=" + f + ", ").orElse("") +
             optionalDescription().map(f -> "description=" + f + ", ").orElse("") +
+            optionalMediaId().map(f -> "mediaId=" + f + ", ").orElse("") +
             optionalDistinct().map(f -> "distinct=" + f + ", ").orElse("") +
         "}";
     }

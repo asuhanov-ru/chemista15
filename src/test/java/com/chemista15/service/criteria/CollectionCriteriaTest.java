@@ -78,6 +78,7 @@ class CollectionCriteriaTest {
         collectionCriteria.uuid();
         collectionCriteria.name();
         collectionCriteria.description();
+        collectionCriteria.mediaId();
         collectionCriteria.distinct();
     }
 
@@ -88,6 +89,7 @@ class CollectionCriteriaTest {
                 condition.apply(criteria.getUuid()) &&
                 condition.apply(criteria.getName()) &&
                 condition.apply(criteria.getDescription()) &&
+                condition.apply(criteria.getMediaId()) &&
                 condition.apply(criteria.getDistinct()),
             "every filter matches"
         );
@@ -100,6 +102,7 @@ class CollectionCriteriaTest {
                 condition.apply(criteria.getUuid(), copy.getUuid()) &&
                 condition.apply(criteria.getName(), copy.getName()) &&
                 condition.apply(criteria.getDescription(), copy.getDescription()) &&
+                condition.apply(criteria.getMediaId(), copy.getMediaId()) &&
                 condition.apply(criteria.getDistinct(), copy.getDistinct()),
             "every filter matches"
         );

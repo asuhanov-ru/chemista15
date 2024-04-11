@@ -6,6 +6,7 @@ import com.chemista15.repository.CollectionRepository;
 import com.chemista15.service.criteria.CollectionCriteria;
 import com.chemista15.service.dto.CollectionDTO;
 import com.chemista15.service.mapper.CollectionMapper;
+import jakarta.persistence.criteria.JoinType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -84,6 +85,11 @@ public class CollectionQueryService extends QueryService<Collection> {
             }
             if (criteria.getDescription() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getDescription(), Collection_.description));
+            }
+            if (criteria.getMediaId() != null) {
+                specification = specification.and(
+                    buildSpecification(criteria.getMediaId(), root -> root.join(Collection_.media, JoinType.LEFT).get(Media_.id))
+                );
             }
         }
         return specification;

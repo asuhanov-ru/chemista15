@@ -10,39 +10,39 @@ import {
   entityConfirmDeleteButtonSelector,
 } from '../../support/entity';
 
-describe('Collection e2e test', () => {
-  const collectionPageUrl = '/collection';
-  const collectionPageUrlPattern = new RegExp('/collection(\\?.*)?$');
+describe('Media e2e test', () => {
+  const mediaPageUrl = '/media';
+  const mediaPageUrlPattern = new RegExp('/media(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const collectionSample = {};
+  const mediaSample = {};
 
-  let collection;
+  let media;
 
   beforeEach(() => {
     cy.login(username, password);
   });
 
   beforeEach(() => {
-    cy.intercept('GET', '/api/collections+(?*|)').as('entitiesRequest');
-    cy.intercept('POST', '/api/collections').as('postEntityRequest');
-    cy.intercept('DELETE', '/api/collections/*').as('deleteEntityRequest');
+    cy.intercept('GET', '/api/media+(?*|)').as('entitiesRequest');
+    cy.intercept('POST', '/api/media').as('postEntityRequest');
+    cy.intercept('DELETE', '/api/media/*').as('deleteEntityRequest');
   });
 
   afterEach(() => {
-    if (collection) {
+    if (media) {
       cy.authenticatedRequest({
         method: 'DELETE',
-        url: `/api/collections/${collection.id}`,
+        url: `/api/media/${media.id}`,
       }).then(() => {
-        collection = undefined;
+        media = undefined;
       });
     }
   });
 
-  it('Collections menu should load Collections page', () => {
+  it('Media menu should load Media page', () => {
     cy.visit('/');
-    cy.clickOnEntityMenuItem('collection');
+    cy.clickOnEntityMenuItem('media');
     cy.wait('@entitiesRequest').then(({ response }) => {
       if (response.body.length === 0) {
         cy.get(entityTableSelector).should('not.exist');
@@ -50,27 +50,27 @@ describe('Collection e2e test', () => {
         cy.get(entityTableSelector).should('exist');
       }
     });
-    cy.getEntityHeading('Collection').should('exist');
-    cy.url().should('match', collectionPageUrlPattern);
+    cy.getEntityHeading('Media').should('exist');
+    cy.url().should('match', mediaPageUrlPattern);
   });
 
-  describe('Collection page', () => {
+  describe('Media page', () => {
     describe('create button click', () => {
       beforeEach(() => {
-        cy.visit(collectionPageUrl);
+        cy.visit(mediaPageUrl);
         cy.wait('@entitiesRequest');
       });
 
-      it('should load create Collection page', () => {
+      it('should load create Media page', () => {
         cy.get(entityCreateButtonSelector).click();
-        cy.url().should('match', new RegExp('/collection/new$'));
-        cy.getEntityCreateUpdateHeading('Collection');
+        cy.url().should('match', new RegExp('/media/new$'));
+        cy.getEntityCreateUpdateHeading('Media');
         cy.get(entityCreateSaveButtonSelector).should('exist');
         cy.get(entityCreateCancelButtonSelector).click();
         cy.wait('@entitiesRequest').then(({ response }) => {
           expect(response.statusCode).to.equal(200);
         });
-        cy.url().should('match', collectionPageUrlPattern);
+        cy.url().should('match', mediaPageUrlPattern);
       });
     });
 
@@ -78,68 +78,68 @@ describe('Collection e2e test', () => {
       beforeEach(() => {
         cy.authenticatedRequest({
           method: 'POST',
-          url: '/api/collections',
-          body: collectionSample,
+          url: '/api/media',
+          body: mediaSample,
         }).then(({ body }) => {
-          collection = body;
+          media = body;
 
           cy.intercept(
             {
               method: 'GET',
-              url: '/api/collections+(?*|)',
+              url: '/api/media+(?*|)',
               times: 1,
             },
             {
               statusCode: 200,
               headers: {
-                link: '<http://localhost/api/collections?page=0&size=20>; rel="last",<http://localhost/api/collections?page=0&size=20>; rel="first"',
+                link: '<http://localhost/api/media?page=0&size=20>; rel="last",<http://localhost/api/media?page=0&size=20>; rel="first"',
               },
-              body: [collection],
+              body: [media],
             },
           ).as('entitiesRequestInternal');
         });
 
-        cy.visit(collectionPageUrl);
+        cy.visit(mediaPageUrl);
 
         cy.wait('@entitiesRequestInternal');
       });
 
-      it('detail button click should load details Collection page', () => {
+      it('detail button click should load details Media page', () => {
         cy.get(entityDetailsButtonSelector).first().click();
-        cy.getEntityDetailsHeading('collection');
+        cy.getEntityDetailsHeading('media');
         cy.get(entityDetailsBackButtonSelector).click();
         cy.wait('@entitiesRequest').then(({ response }) => {
           expect(response.statusCode).to.equal(200);
         });
-        cy.url().should('match', collectionPageUrlPattern);
+        cy.url().should('match', mediaPageUrlPattern);
       });
 
-      it('edit button click should load edit Collection page and go back', () => {
+      it('edit button click should load edit Media page and go back', () => {
         cy.get(entityEditButtonSelector).first().click();
-        cy.getEntityCreateUpdateHeading('Collection');
+        cy.getEntityCreateUpdateHeading('Media');
         cy.get(entityCreateSaveButtonSelector).should('exist');
         cy.get(entityCreateCancelButtonSelector).click();
         cy.wait('@entitiesRequest').then(({ response }) => {
           expect(response.statusCode).to.equal(200);
         });
-        cy.url().should('match', collectionPageUrlPattern);
+        cy.url().should('match', mediaPageUrlPattern);
       });
 
-      it('edit button click should load edit Collection page and save', () => {
+      it('edit button click should load edit Media page and save', () => {
         cy.get(entityEditButtonSelector).first().click();
-        cy.getEntityCreateUpdateHeading('Collection');
+        cy.getEntityCreateUpdateHeading('Media');
         cy.get(entityCreateSaveButtonSelector).click();
         cy.wait('@entitiesRequest').then(({ response }) => {
           expect(response.statusCode).to.equal(200);
         });
-        cy.url().should('match', collectionPageUrlPattern);
+        cy.url().should('match', mediaPageUrlPattern);
       });
 
-      it('last delete button click should delete instance of Collection', () => {
-        cy.intercept('GET', '/api/collections/*').as('dialogDeleteRequest');
+      it('last delete button click should delete instance of Media', () => {
+        cy.intercept('GET', '/api/media/*').as('dialogDeleteRequest');
         cy.get(entityDeleteButtonSelector).last().click();
         cy.wait('@dialogDeleteRequest');
-        cy.getEntityDeleteDialogHeading('collection').should('exist');
+        cy.getEntityDeleteDialogHeading('media').should('exist');
         cy.get(entityConfirmDeleteButtonSelector).click();
         cy.wait('@deleteEntityRequest').then(({ response }) => {
           expect(response.statusCode).to.equal(204);
@@ -147,40 +147,43 @@ describe('Collection e2e test', () => {
         cy.wait('@entitiesRequest').then(({ response }) => {
           expect(response.statusCode).to.equal(200);
         });
-        cy.url().should('match', collectionPageUrlPattern);
+        cy.url().should('match', mediaPageUrlPattern);
 
-        collection = undefined;
+        media = undefined;
       });
     });
   });
 
-  describe('new Collection page', () => {
+  describe('new Media page', () => {
     beforeEach(() => {
-      cy.visit(`${collectionPageUrl}`);
+      cy.visit(`${mediaPageUrl}`);
       cy.get(entityCreateButtonSelector).click();
-      cy.getEntityCreateUpdateHeading('Collection');
+      cy.getEntityCreateUpdateHeading('Media');
     });
 
-    it('should create an instance of Collection', () => {
-      cy.get(`[data-cy="uuid"]`).type('b7e63b8d-ea61-4bed-970f-d59f1c6d788b');
-      cy.get(`[data-cy="uuid"]`).invoke('val').should('match', new RegExp('b7e63b8d-ea61-4bed-970f-d59f1c6d788b'));
+    it('should create an instance of Media', () => {
+      cy.get(`[data-cy="uuid"]`).type('f2410875-8de6-4e1a-8d49-190cc907c7dd');
+      cy.get(`[data-cy="uuid"]`).invoke('val').should('match', new RegExp('f2410875-8de6-4e1a-8d49-190cc907c7dd'));
 
-      cy.get(`[data-cy="name"]`).type('barring because');
-      cy.get(`[data-cy="name"]`).should('have.value', 'barring because');
+      cy.get(`[data-cy="fileName"]`).type('considering');
+      cy.get(`[data-cy="fileName"]`).should('have.value', 'considering');
 
-      cy.get(`[data-cy="description"]`).type('how oval internal');
-      cy.get(`[data-cy="description"]`).should('have.value', 'how oval internal');
+      cy.get(`[data-cy="fileType"]`).type('eek although');
+      cy.get(`[data-cy="fileType"]`).should('have.value', 'eek although');
+
+      cy.get(`[data-cy="fileDesc"]`).type('establish upliftingly shudder');
+      cy.get(`[data-cy="fileDesc"]`).should('have.value', 'establish upliftingly shudder');
 
       cy.get(entityCreateSaveButtonSelector).click();
 
       cy.wait('@postEntityRequest').then(({ response }) => {
         expect(response.statusCode).to.equal(201);
-        collection = response.body;
+        media = response.body;
       });
       cy.wait('@entitiesRequest').then(({ response }) => {
         expect(response.statusCode).to.equal(200);
       });
-      cy.url().should('match', collectionPageUrlPattern);
+      cy.url().should('match', mediaPageUrlPattern);
     });
   });
 });

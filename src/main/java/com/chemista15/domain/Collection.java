@@ -1,7 +1,10 @@
 package com.chemista15.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -28,6 +31,10 @@ public class Collection implements Serializable {
 
     @Column(name = "description")
     private String description;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "collection")
+    @JsonIgnoreProperties(value = { "collection" }, allowSetters = true)
+    private Set<Media> media = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -81,6 +88,37 @@ public class Collection implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<Media> getMedia() {
+        return this.media;
+    }
+
+    public void setMedia(Set<Media> media) {
+        if (this.media != null) {
+            this.media.forEach(i -> i.setCollection(null));
+        }
+        if (media != null) {
+            media.forEach(i -> i.setCollection(this));
+        }
+        this.media = media;
+    }
+
+    public Collection media(Set<Media> media) {
+        this.setMedia(media);
+        return this;
+    }
+
+    public Collection addMedia(Media media) {
+        this.media.add(media);
+        media.setCollection(this);
+        return this;
+    }
+
+    public Collection removeMedia(Media media) {
+        this.media.remove(media);
+        media.setCollection(null);
+        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

@@ -1,0 +1,40 @@
+{
+  "annotations": {
+    "changelogDate": "20240411114157"
+  },
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "uuid",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "fileName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fileType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fileDesc",
+      "fieldType": "String"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Media",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "collection",
+      "otherEntityRelationshipName": "media",
+      "relationshipName": "collection",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

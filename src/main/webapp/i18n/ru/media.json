@@ -1,0 +1,28 @@
+{
+  "chemista15App": {
+    "media": {
+      "home": {
+        "title": "Media",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Media",
+        "createOrEditLabel": "Создать или отредактировать Media",
+        "notFound": "Media не найдено"
+      },
+      "created": "Новый Media создан с идентификатором {{ param }}",
+      "updated": "Media обновлен с идентификатором {{ param }}",
+      "deleted": "Media удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Media {{ id }}?"
+      },
+      "detail": {
+        "title": "Media"
+      },
+      "id": "ID",
+      "uuid": "Uuid",
+      "fileName": "File Name",
+      "fileType": "File Type",
+      "fileDesc": "File Desc",
+      "collection": "Collection"
+    }
+  }
+}

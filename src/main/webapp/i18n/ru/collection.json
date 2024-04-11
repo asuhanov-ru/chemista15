@@ -20,7 +20,8 @@
       "id": "ID",
       "uuid": "Uuid",
       "name": "Name",
-      "description": "Description"
+      "description": "Description",
+      "media": "Media"
     }
   }
 }
