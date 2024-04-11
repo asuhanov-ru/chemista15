@@ -1,0 +1,26 @@
+{
+  "chemista15App": {
+    "collection": {
+      "home": {
+        "title": "Collections",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Collection",
+        "createOrEditLabel": "Создать или отредактировать Collection",
+        "notFound": "Collections не найдено"
+      },
+      "created": "Новый Collection создан с идентификатором {{ param }}",
+      "updated": "Collection обновлен с идентификатором {{ param }}",
+      "deleted": "Collection удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Collection {{ id }}?"
+      },
+      "detail": {
+        "title": "Collection"
+      },
+      "id": "ID",
+      "uuid": "Uuid",
+      "name": "Name",
+      "description": "Description"
+    }
+  }
+}
