@@ -3,6 +3,8 @@ package com.chemista15.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -36,6 +38,10 @@ public class Media implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = { "media" }, allowSetters = true)
     private Collection collection;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "media")
+    @JsonIgnoreProperties(value = { "author", "media" }, allowSetters = true)
+    private Set<Book> books = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -114,6 +120,37 @@ public class Media implements Serializable {
 
     public Media collection(Collection collection) {
         this.setCollection(collection);
+        return this;
+    }
+
+    public Set<Book> getBooks() {
+        return this.books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        if (this.books != null) {
+            this.books.forEach(i -> i.setMedia(null));
+        }
+        if (books != null) {
+            books.forEach(i -> i.setMedia(this));
+        }
+        this.books = books;
+    }
+
+    public Media books(Set<Book> books) {
+        this.setBooks(books);
+        return this;
+    }
+
+    public Media addBook(Book book) {
+        this.books.add(book);
+        book.setMedia(this);
+        return this;
+    }
+
+    public Media removeBook(Book book) {
+        this.books.remove(book);
+        book.setMedia(null);
         return this;
     }
 

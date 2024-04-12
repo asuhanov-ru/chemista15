@@ -9,7 +9,9 @@
         "main": "Сущности",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
         "collection": "Collection",
-        "media": "Media"
+        "media": "Media",
+        "author": "Author",
+        "book": "Book"
       },
       "account": {
         "main": "Профиль",

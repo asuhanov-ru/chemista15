@@ -94,6 +94,11 @@ public class MediaQueryService extends QueryService<Media> {
                     buildSpecification(criteria.getCollectionId(), root -> root.join(Media_.collection, JoinType.LEFT).get(Collection_.id))
                 );
             }
+            if (criteria.getBookId() != null) {
+                specification = specification.and(
+                    buildSpecification(criteria.getBookId(), root -> root.join(Media_.books, JoinType.LEFT).get(Book_.id))
+                );
+            }
         }
         return specification;
     }

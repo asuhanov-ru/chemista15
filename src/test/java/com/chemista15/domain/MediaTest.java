@@ -1,10 +1,13 @@
 package com.chemista15.domain;
 
+import static com.chemista15.domain.BookTestSamples.*;
 import static com.chemista15.domain.CollectionTestSamples.*;
 import static com.chemista15.domain.MediaTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.chemista15.web.rest.TestUtil;
+import java.util.HashSet;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 class MediaTest {
@@ -33,5 +36,27 @@ class MediaTest {
 
         media.collection(null);
         assertThat(media.getCollection()).isNull();
+    }
+
+    @Test
+    void bookTest() throws Exception {
+        Media media = getMediaRandomSampleGenerator();
+        Book bookBack = getBookRandomSampleGenerator();
+
+        media.addBook(bookBack);
+        assertThat(media.getBooks()).containsOnly(bookBack);
+        assertThat(bookBack.getMedia()).isEqualTo(media);
+
+        media.removeBook(bookBack);
+        assertThat(media.getBooks()).doesNotContain(bookBack);
+        assertThat(bookBack.getMedia()).isNull();
+
+        media.books(new HashSet<>(Set.of(bookBack)));
+        assertThat(media.getBooks()).containsOnly(bookBack);
+        assertThat(bookBack.getMedia()).isEqualTo(media);
+
+        media.setBooks(new HashSet<>());
+        assertThat(media.getBooks()).doesNotContain(bookBack);
+        assertThat(bookBack.getMedia()).isNull();
     }
 }

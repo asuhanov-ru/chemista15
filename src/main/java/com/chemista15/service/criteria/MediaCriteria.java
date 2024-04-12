@@ -34,6 +34,8 @@ public class MediaCriteria implements Serializable, Criteria {
 
     private LongFilter collectionId;
 
+    private LongFilter bookId;
+
     private Boolean distinct;
 
     public MediaCriteria() {}
@@ -45,6 +47,7 @@ public class MediaCriteria implements Serializable, Criteria {
         this.fileType = other.optionalFileType().map(StringFilter::copy).orElse(null);
         this.fileDesc = other.optionalFileDesc().map(StringFilter::copy).orElse(null);
         this.collectionId = other.optionalCollectionId().map(LongFilter::copy).orElse(null);
+        this.bookId = other.optionalBookId().map(LongFilter::copy).orElse(null);
         this.distinct = other.distinct;
     }
 
@@ -167,6 +170,25 @@ public class MediaCriteria implements Serializable, Criteria {
         this.collectionId = collectionId;
     }
 
+    public LongFilter getBookId() {
+        return bookId;
+    }
+
+    public Optional<LongFilter> optionalBookId() {
+        return Optional.ofNullable(bookId);
+    }
+
+    public LongFilter bookId() {
+        if (bookId == null) {
+            setBookId(new LongFilter());
+        }
+        return bookId;
+    }
+
+    public void setBookId(LongFilter bookId) {
+        this.bookId = bookId;
+    }
+
     public Boolean getDistinct() {
         return distinct;
     }
@@ -202,13 +224,14 @@ public class MediaCriteria implements Serializable, Criteria {
             Objects.equals(fileType, that.fileType) &&
             Objects.equals(fileDesc, that.fileDesc) &&
             Objects.equals(collectionId, that.collectionId) &&
+            Objects.equals(bookId, that.bookId) &&
             Objects.equals(distinct, that.distinct)
         );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, uuid, fileName, fileType, fileDesc, collectionId, distinct);
+        return Objects.hash(id, uuid, fileName, fileType, fileDesc, collectionId, bookId, distinct);
     }
 
     // prettier-ignore
@@ -221,6 +244,7 @@ public class MediaCriteria implements Serializable, Criteria {
             optionalFileType().map(f -> "fileType=" + f + ", ").orElse("") +
             optionalFileDesc().map(f -> "fileDesc=" + f + ", ").orElse("") +
             optionalCollectionId().map(f -> "collectionId=" + f + ", ").orElse("") +
+            optionalBookId().map(f -> "bookId=" + f + ", ").orElse("") +
             optionalDistinct().map(f -> "distinct=" + f + ", ").orElse("") +
         "}";
     }

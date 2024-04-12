@@ -162,17 +162,17 @@ describe('Media e2e test', () => {
     });
 
     it('should create an instance of Media', () => {
-      cy.get(`[data-cy="uuid"]`).type('f2410875-8de6-4e1a-8d49-190cc907c7dd');
-      cy.get(`[data-cy="uuid"]`).invoke('val').should('match', new RegExp('f2410875-8de6-4e1a-8d49-190cc907c7dd'));
+      cy.get(`[data-cy="uuid"]`).type('ac8377ad-3686-4ec8-9115-2ad58ef0e3f7');
+      cy.get(`[data-cy="uuid"]`).invoke('val').should('match', new RegExp('ac8377ad-3686-4ec8-9115-2ad58ef0e3f7'));
 
-      cy.get(`[data-cy="fileName"]`).type('considering');
-      cy.get(`[data-cy="fileName"]`).should('have.value', 'considering');
+      cy.get(`[data-cy="fileName"]`).type('warp');
+      cy.get(`[data-cy="fileName"]`).should('have.value', 'warp');
 
-      cy.get(`[data-cy="fileType"]`).type('eek although');
-      cy.get(`[data-cy="fileType"]`).should('have.value', 'eek although');
+      cy.get(`[data-cy="fileType"]`).type('optimistic hm wherever');
+      cy.get(`[data-cy="fileType"]`).should('have.value', 'optimistic hm wherever');
 
-      cy.get(`[data-cy="fileDesc"]`).type('establish upliftingly shudder');
-      cy.get(`[data-cy="fileDesc"]`).should('have.value', 'establish upliftingly shudder');
+      cy.get(`[data-cy="fileDesc"]`).type('focused');
+      cy.get(`[data-cy="fileDesc"]`).should('have.value', 'focused');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

@@ -33,7 +33,7 @@ public class Collection implements Serializable {
     private String description;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "collection")
-    @JsonIgnoreProperties(value = { "collection" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "collection", "books" }, allowSetters = true)
     private Set<Media> media = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

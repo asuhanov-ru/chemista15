@@ -581,7 +581,7 @@ class MediaResourceIT {
         Media partialUpdatedMedia = new Media();
         partialUpdatedMedia.setId(media.getId());
 
-        partialUpdatedMedia.uuid(UPDATED_UUID).fileName(UPDATED_FILE_NAME).fileType(UPDATED_FILE_TYPE).fileDesc(UPDATED_FILE_DESC);
+        partialUpdatedMedia.fileName(UPDATED_FILE_NAME).fileType(UPDATED_FILE_TYPE);
 
         restMediaMockMvc
             .perform(

@@ -478,7 +478,7 @@ class CollectionResourceIT {
         Collection partialUpdatedCollection = new Collection();
         partialUpdatedCollection.setId(collection.getId());
 
-        partialUpdatedCollection.description(UPDATED_DESCRIPTION);
+        partialUpdatedCollection.uuid(UPDATED_UUID).name(UPDATED_NAME).description(UPDATED_DESCRIPTION);
 
         restCollectionMockMvc
             .perform(

@@ -80,6 +80,7 @@ class MediaCriteriaTest {
         mediaCriteria.fileType();
         mediaCriteria.fileDesc();
         mediaCriteria.collectionId();
+        mediaCriteria.bookId();
         mediaCriteria.distinct();
     }
 
@@ -92,6 +93,7 @@ class MediaCriteriaTest {
                 condition.apply(criteria.getFileType()) &&
                 condition.apply(criteria.getFileDesc()) &&
                 condition.apply(criteria.getCollectionId()) &&
+                condition.apply(criteria.getBookId()) &&
                 condition.apply(criteria.getDistinct()),
             "every filter matches"
         );
@@ -106,6 +108,7 @@ class MediaCriteriaTest {
                 condition.apply(criteria.getFileType(), copy.getFileType()) &&
                 condition.apply(criteria.getFileDesc(), copy.getFileDesc()) &&
                 condition.apply(criteria.getCollectionId(), copy.getCollectionId()) &&
+                condition.apply(criteria.getBookId(), copy.getBookId()) &&
                 condition.apply(criteria.getDistinct(), copy.getDistinct()),
             "every filter matches"
         );

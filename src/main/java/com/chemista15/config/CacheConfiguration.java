@@ -44,6 +44,10 @@ public class CacheConfiguration {
             createCache(cm, com.chemista15.domain.Collection.class.getName());
             createCache(cm, com.chemista15.domain.Collection.class.getName() + ".media");
             createCache(cm, com.chemista15.domain.Media.class.getName());
+            createCache(cm, com.chemista15.domain.Author.class.getName());
+            createCache(cm, com.chemista15.domain.Media.class.getName() + ".books");
+            createCache(cm, com.chemista15.domain.Author.class.getName() + ".books");
+            createCache(cm, com.chemista15.domain.Book.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
