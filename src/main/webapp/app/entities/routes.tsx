@@ -7,6 +7,7 @@ import Collection from './collection';
 import Media from './media';
 import Author from './author';
 import Book from './book';
+import OcrTask from './ocr-task';
 /* jhipster-needle-add-route-import - JHipster will add routes here */
 
 export default () => {
@@ -18,6 +19,7 @@ export default () => {
         <Route path="media/*" element={<Media />} />
         <Route path="author/*" element={<Author />} />
         <Route path="book/*" element={<Book />} />
+        <Route path="ocr-task/*" element={<OcrTask />} />
         {/* jhipster-needle-add-route-path - JHipster will add routes here */}
       </ErrorBoundaryRoutes>
     </div>

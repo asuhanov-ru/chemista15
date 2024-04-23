@@ -11,7 +11,8 @@
         "collection": "Collection",
         "media": "Media",
         "author": "Author",
-        "book": "Book"
+        "book": "Book",
+        "ocrTask": "Ocr Task"
       },
       "account": {
         "main": "Профиль",

@@ -15,6 +15,7 @@
     <include file="config/liquibase/changelog/20240411114157_added_entity_Media.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240412093122_added_entity_Author.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240412124104_added_entity_Book.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240415140729_added_entity_OcrTask.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20240411114157_added_entity_constraints_Media.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240412124104_added_entity_constraints_Book.xml" relativeToChangelogFile="false"/>

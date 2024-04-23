@@ -161,6 +161,7 @@ dependencies {
     testImplementation "org.testcontainers:junit-jupiter"
     testImplementation "org.testcontainers:testcontainers"
     // jhipster-needle-gradle-dependency - JHipster will add additional dependencies here
+    implementation "com.itextpdf:itext7-core:8.0.1"
 }
 
 task cleanResources(type: Delete) {

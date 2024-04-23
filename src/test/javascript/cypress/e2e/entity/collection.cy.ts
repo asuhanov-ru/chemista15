@@ -162,14 +162,14 @@ describe('Collection e2e test', () => {
     });
 
     it('should create an instance of Collection', () => {
-      cy.get(`[data-cy="uuid"]`).type('5ed69c56-2223-431c-8542-810dd18ec63a');
-      cy.get(`[data-cy="uuid"]`).invoke('val').should('match', new RegExp('5ed69c56-2223-431c-8542-810dd18ec63a'));
+      cy.get(`[data-cy="uuid"]`).type('dc8e1d53-b533-4e0c-86d2-315efc7297c5');
+      cy.get(`[data-cy="uuid"]`).invoke('val').should('match', new RegExp('dc8e1d53-b533-4e0c-86d2-315efc7297c5'));
 
-      cy.get(`[data-cy="name"]`).type('ew');
-      cy.get(`[data-cy="name"]`).should('have.value', 'ew');
+      cy.get(`[data-cy="name"]`).type('poorly');
+      cy.get(`[data-cy="name"]`).should('have.value', 'poorly');
 
-      cy.get(`[data-cy="description"]`).type('furthermore glory unto');
-      cy.get(`[data-cy="description"]`).should('have.value', 'furthermore glory unto');
+      cy.get(`[data-cy="description"]`).type('poignance standard');
+      cy.get(`[data-cy="description"]`).should('have.value', 'poignance standard');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

@@ -688,7 +688,7 @@ class BookResourceIT {
         Book partialUpdatedBook = new Book();
         partialUpdatedBook.setId(book.getId());
 
-        partialUpdatedBook.uuid(UPDATED_UUID).description(UPDATED_DESCRIPTION).mediaStartPage(UPDATED_MEDIA_START_PAGE);
+        partialUpdatedBook.description(UPDATED_DESCRIPTION).mediaEndPage(UPDATED_MEDIA_END_PAGE);
 
         restBookMockMvc
             .perform(

@@ -1,0 +1,30 @@
+{
+  "chemista15App": {
+    "ocrTask": {
+      "home": {
+        "title": "Ocr Tasks",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Ocr Task",
+        "createOrEditLabel": "Create or edit a Ocr Task",
+        "notFound": "No Ocr Tasks found"
+      },
+      "created": "A new Ocr Task is created with identifier {{ param }}",
+      "updated": "A Ocr Task is updated with identifier {{ param }}",
+      "deleted": "A Ocr Task is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ocr Task {{ id }}?"
+      },
+      "detail": {
+        "title": "Ocr Task"
+      },
+      "id": "ID",
+      "uuid": "Uuid",
+      "mediaId": "Media Id",
+      "pageNumber": "Page Number",
+      "jobStatus": "Job Status",
+      "createTime": "Create Time",
+      "startTime": "Start Time",
+      "stopTime": "Stop Time"
+    }
+  }
+}

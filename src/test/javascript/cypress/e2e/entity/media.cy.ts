@@ -162,17 +162,17 @@ describe('Media e2e test', () => {
     });
 
     it('should create an instance of Media', () => {
-      cy.get(`[data-cy="uuid"]`).type('ac8377ad-3686-4ec8-9115-2ad58ef0e3f7');
-      cy.get(`[data-cy="uuid"]`).invoke('val').should('match', new RegExp('ac8377ad-3686-4ec8-9115-2ad58ef0e3f7'));
+      cy.get(`[data-cy="uuid"]`).type('64dfa3e6-7982-47ba-85d1-9bb991e52cb7');
+      cy.get(`[data-cy="uuid"]`).invoke('val').should('match', new RegExp('64dfa3e6-7982-47ba-85d1-9bb991e52cb7'));
 
-      cy.get(`[data-cy="fileName"]`).type('warp');
-      cy.get(`[data-cy="fileName"]`).should('have.value', 'warp');
+      cy.get(`[data-cy="fileName"]`).type('locust mission minion');
+      cy.get(`[data-cy="fileName"]`).should('have.value', 'locust mission minion');
 
-      cy.get(`[data-cy="fileType"]`).type('optimistic hm wherever');
-      cy.get(`[data-cy="fileType"]`).should('have.value', 'optimistic hm wherever');
+      cy.get(`[data-cy="fileType"]`).type('consequently feline knottily');
+      cy.get(`[data-cy="fileType"]`).should('have.value', 'consequently feline knottily');
 
-      cy.get(`[data-cy="fileDesc"]`).type('focused');
-      cy.get(`[data-cy="fileDesc"]`).should('have.value', 'focused');
+      cy.get(`[data-cy="fileDesc"]`).type('outside vice');
+      cy.get(`[data-cy="fileDesc"]`).should('have.value', 'outside vice');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

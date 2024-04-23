@@ -99,3 +99,8 @@ jhipster:
 # ===================================================================
 
 # application:
+collections:
+  location: ${DICH_MEDIA_DIR}
+
+tessdata:
+  location: ${DICH_TESSDATA_DIR}

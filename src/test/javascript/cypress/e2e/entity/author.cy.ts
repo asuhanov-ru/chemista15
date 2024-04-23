@@ -162,14 +162,14 @@ describe('Author e2e test', () => {
     });
 
     it('should create an instance of Author', () => {
-      cy.get(`[data-cy="uuid"]`).type('04b2ec8d-88da-41d6-897e-61416107e878');
-      cy.get(`[data-cy="uuid"]`).invoke('val').should('match', new RegExp('04b2ec8d-88da-41d6-897e-61416107e878'));
+      cy.get(`[data-cy="uuid"]`).type('dee590d7-540b-418c-bebb-a7c79ffab707');
+      cy.get(`[data-cy="uuid"]`).invoke('val').should('match', new RegExp('dee590d7-540b-418c-bebb-a7c79ffab707'));
 
-      cy.get(`[data-cy="name"]`).type('underneath');
-      cy.get(`[data-cy="name"]`).should('have.value', 'underneath');
+      cy.get(`[data-cy="name"]`).type('after mobilize starboard');
+      cy.get(`[data-cy="name"]`).should('have.value', 'after mobilize starboard');
 
-      cy.get(`[data-cy="callsign"]`).type('barring');
-      cy.get(`[data-cy="callsign"]`).should('have.value', 'barring');
+      cy.get(`[data-cy="callsign"]`).type('pressure mascara');
+      cy.get(`[data-cy="callsign"]`).should('have.value', 'pressure mascara');
 
       cy.setFieldImageAsBytesOfEntity('image', 'integration-test.png', 'image/png');
 

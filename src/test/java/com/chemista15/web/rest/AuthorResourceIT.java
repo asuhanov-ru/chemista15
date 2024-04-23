@@ -506,7 +506,7 @@ class AuthorResourceIT {
         Author partialUpdatedAuthor = new Author();
         partialUpdatedAuthor.setId(author.getId());
 
-        partialUpdatedAuthor.uuid(UPDATED_UUID).name(UPDATED_NAME).image(UPDATED_IMAGE).imageContentType(UPDATED_IMAGE_CONTENT_TYPE);
+        partialUpdatedAuthor.uuid(UPDATED_UUID);
 
         restAuthorMockMvc
             .perform(

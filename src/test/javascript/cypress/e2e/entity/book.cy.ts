@@ -162,20 +162,20 @@ describe('Book e2e test', () => {
     });
 
     it('should create an instance of Book', () => {
-      cy.get(`[data-cy="uuid"]`).type('fb9a3787-2d44-408a-9d7d-def5a8c55b19');
-      cy.get(`[data-cy="uuid"]`).invoke('val').should('match', new RegExp('fb9a3787-2d44-408a-9d7d-def5a8c55b19'));
+      cy.get(`[data-cy="uuid"]`).type('c3b631be-42f7-4f03-bb64-6acc9310ece4');
+      cy.get(`[data-cy="uuid"]`).invoke('val').should('match', new RegExp('c3b631be-42f7-4f03-bb64-6acc9310ece4'));
 
-      cy.get(`[data-cy="name"]`).type('aboard suspiciously apud');
-      cy.get(`[data-cy="name"]`).should('have.value', 'aboard suspiciously apud');
+      cy.get(`[data-cy="name"]`).type('over wipe what');
+      cy.get(`[data-cy="name"]`).should('have.value', 'over wipe what');
 
       cy.get(`[data-cy="description"]`).type('../fake-data/blob/hipster.txt');
       cy.get(`[data-cy="description"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
 
-      cy.get(`[data-cy="mediaStartPage"]`).type('7212');
-      cy.get(`[data-cy="mediaStartPage"]`).should('have.value', '7212');
+      cy.get(`[data-cy="mediaStartPage"]`).type('83');
+      cy.get(`[data-cy="mediaStartPage"]`).should('have.value', '83');
 
-      cy.get(`[data-cy="mediaEndPage"]`).type('21059');
-      cy.get(`[data-cy="mediaEndPage"]`).should('have.value', '21059');
+      cy.get(`[data-cy="mediaEndPage"]`).type('23177');
+      cy.get(`[data-cy="mediaEndPage"]`).should('have.value', '23177');
 
       cy.get(entityCreateSaveButtonSelector).click();
 
